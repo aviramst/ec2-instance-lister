@@ -1,10 +1,10 @@
 {
-  "name": "ec2instancelister",
+  "name": "ec2-instance-lister",
   "version": "0.0.1",
   "description": "List IP addresses of ec2 instances having a certain keyword in their name",
   "main": "index.js",
   "bin": {
-    "ec2instancelister": "index.js"
+    "ec2-instance-lister": "index.js"
   },
   "repository": {
     "type": "git",
