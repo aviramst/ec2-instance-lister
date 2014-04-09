@@ -1,0 +1,8 @@
+{
+	"searchString": "myInstance"
+	"aws": {
+		"accessKeyId": "YourAccessKeyId", 
+		"secretAccessKey": "YourSecretAccessKey", 
+		"region": "us-east-1" 
+	}
+}
