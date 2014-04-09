@@ -2,10 +2,7 @@
 
 var AWS = require('aws-sdk');
 var rc = require('rc');
-var config = rc('ec2instancelister');
-
-var START_SIGN = 'ec2sync-section-start';
-var END_SIGN = 'ec2sync-section-end';
+var config = rc('ec2-instance-lister');
 
 var ec2params = {Filters: [
     {
