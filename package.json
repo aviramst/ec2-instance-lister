@@ -1,0 +1,19 @@
+{
+  "name": "ec2instancelister",
+  "version": "0.0.1",
+  "description": "List IP addresses of ec2 instances having a certain keyword in their name",
+  "main": "index.js",
+  "bin": {
+    "ec2instancelister": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aviramst/ec2instancelister"
+  },
+  "author": "Aviram Sterman",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.0.0-rc13",
+    "rc": "^0.3.4"
+  }
+}
