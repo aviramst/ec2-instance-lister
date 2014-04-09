@@ -1,4 +1,4 @@
-ec2instancelister
+ec2-instance-lister
 =================
 
 List IP addresses of ec2 instances having a certain keyword in their name.
