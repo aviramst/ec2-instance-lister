@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/aviramst/ec2instancelister"
+    "url": "https://github.com/aviramst/ec2-instance-lister"
   },
   "author": "Aviram Sterman",
   "license": "MIT",
