@@ -4,7 +4,8 @@
   "description": "List IP addresses of ec2 instances having a certain keyword in their name",
   "main": "index.js",
   "bin": {
-    "ec2-instance-lister": "index.js"
+    "ec2-instance-lister": "index.js",
+    "ec2l": "index.js"
   },
   "repository": {
     "type": "git",

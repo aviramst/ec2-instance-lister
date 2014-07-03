@@ -4,6 +4,12 @@ var AWS = require('aws-sdk');
 var rc = require('rc');
 var config = rc('ec2-instance-lister');
 
+var searchString
+if (config.s)
+	searchString = config.s
+else
+	searchString = config.searchString
+
 var ec2params = {Filters: [
     {
       Name: 'instance-state-code',
@@ -34,7 +40,7 @@ function onResponse (err, data) {
 				var instance = group[j];
 				var tags = instance.Tags;
 				for (var k=0; k<tags.length; k++) {
-					if ((tags[k].Key === 'Name') && (tags[k].Value.indexOf(config.searchString) > -1)) {
+					if ((tags[k].Key === 'Name') && (tags[k].Value.indexOf(searchString) > -1)) {
 						console.log(instance.PublicIpAddress);
 					}
 				}
