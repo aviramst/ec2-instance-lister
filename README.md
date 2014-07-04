@@ -17,5 +17,5 @@ This module uses [RC](https://www.npmjs.org/package/rc) to manage its configurat
 Run:
 
 ```
-ec2l -s myInstanceName
+sudo ec2-instance-lister
 ```

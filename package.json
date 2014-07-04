@@ -15,7 +15,6 @@
   "license": "MIT",
   "dependencies": {
     "rc": "^0.4.0",
-    "aws-sdk": "^2.0.4",
-    "nomnom": "^1.8.0"
+    "aws-sdk": "^2.0.4"
   }
 }
