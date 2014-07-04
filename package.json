@@ -14,7 +14,7 @@
   "author": "Aviram Sterman",
   "license": "MIT",
   "dependencies": {
-    "rc": "^0.3.5",
-    "aws-sdk": "^2.0.0-rc.15"
+    "rc": "^0.4.0",
+    "aws-sdk": "^2.0.4"
   }
 }
