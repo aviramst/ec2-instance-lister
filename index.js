@@ -3,23 +3,27 @@
 var AWS = require('aws-sdk');
 var rc = require('rc');
 var config = rc('ec2-instance-lister');
+var searchString;
 
-var searchString
-if (config.s)
-	searchString = config.s
-else
-	searchString = config.searchString
+if (config.s) {
+	searchString = config.s;
+} else {
+	searchString = config.searchString;
+}
 
-var ec2params = {Filters: [
-    {
-      Name: 'instance-state-code',
-      Values: [
-        '16',
-      ]
-    }
-]};
+var ec2params = {
+	Filters: [{
+		Name: 'instance-state-code',
+		Values: [
+			'16'
+		]
+	}]
+};
 
-function onResponse (err, data) {
+var ec2 = new AWS.EC2(config.aws);
+ec2.describeInstances(ec2params, onResponse);
+
+function onResponse(err, data) {
 	if (err) {
 		console.error(err);
 		return;
@@ -33,13 +37,13 @@ function onResponse (err, data) {
 
 	var result = [];
 
-	for (var i=0; i<res.length; i++) {
+	for (var i = 0; i < res.length; i++) {
 		var group = res[i].Instances;
 		if (group !== undefined) {
-			for (var j=0; j<group.length; j++) {
+			for (var j = 0; j < group.length; j++) {
 				var instance = group[j];
 				var tags = instance.Tags;
-				for (var k=0; k<tags.length; k++) {
+				for (var k = 0; k < tags.length; k++) {
 					if ((tags[k].Key === 'Name') && (tags[k].Value.indexOf(searchString) > -1)) {
 						console.log(instance.PublicIpAddress);
 					}
@@ -48,6 +52,3 @@ function onResponse (err, data) {
 		}
 	}
 }
-
-var ec2 = new AWS.EC2(config.aws);
-ec2.describeInstances(ec2params, onResponse);
