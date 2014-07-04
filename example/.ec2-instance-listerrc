@@ -1,5 +1,4 @@
 {
-	"searchString": "myInstance",
 	"aws": {
 		"accessKeyId": "YourAccessKeyId", 
 		"secretAccessKey": "YourSecretAccessKey", 

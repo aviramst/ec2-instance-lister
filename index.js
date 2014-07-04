@@ -3,13 +3,13 @@
 var AWS = require('aws-sdk');
 var rc = require('rc');
 var config = rc('ec2-instance-lister');
-var searchString;
-
-if (config.s) {
-	searchString = config.s;
-} else {
-	searchString = config.searchString;
-}
+var opts = require('nomnom')
+	.option('searchString', {
+		abbr: 's',
+		default: '',
+		help: 'Instance name to search'
+	})
+	.parse();
 
 var ec2params = {
 	Filters: [{
@@ -32,10 +32,8 @@ function onResponse(err, data) {
 	var res = data.Reservations;
 	if (res === undefined) {
 		console.error('No instances found!');
-		return;
+		process.exit(1);
 	}
-
-	var result = [];
 
 	for (var i = 0; i < res.length; i++) {
 		var group = res[i].Instances;
@@ -44,7 +42,7 @@ function onResponse(err, data) {
 				var instance = group[j];
 				var tags = instance.Tags;
 				for (var k = 0; k < tags.length; k++) {
-					if ((tags[k].Key === 'Name') && (tags[k].Value.indexOf(searchString) > -1)) {
+					if ((tags[k].Key === 'Name') && (tags[k].Value.indexOf(opts.searchString) > -1)) {
 						console.log(instance.PublicIpAddress);
 					}
 				}
