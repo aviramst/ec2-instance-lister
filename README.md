@@ -52,5 +52,5 @@ if you specify --account or add it in the config, e.g. ```ec2-instance-lister --
 }
 ```
 
-### --listPrivateInstances
-A flag that indicates if results should include private instances (that only has private ips, inside a vpc for example). Defaults to false
+### --ipType
+which ip of the server to return: private or public, defaults to 'public'

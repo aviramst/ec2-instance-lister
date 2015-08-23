@@ -30,7 +30,7 @@ if (config.account) {
 	}
 }
 
-var listPrivateInstances = typeof(config.listPrivateInstances) === 'boolean' ? config.listPrivateInstances : false
+var ipField = config.ipType === 'private' ? 'PrivateIpAddress' : 'PublicIpAddress'
 
 var ec2 = new AWS.EC2(credentials);
 ec2.describeInstances(ec2params, onResponse);
@@ -57,10 +57,9 @@ function onResponse(err, data) {
 				var tags = instance.Tags;
 				for (var k = 0; k < tags.length; k++) {
 					if ((tags[k].Key === 'Name') && (tags[k].Value.indexOf(searchString) > -1)) {
-						if (instance.PublicIpAddress) {
-							console.log(instance.PublicIpAddress);
-						} else if (listPrivateInstances) {
-							console.log(instance.PrivateIpAddress);
+						var ip = instance[ipField]
+						if (ip) {
+							console.log(ip);
 						}
 					}
 				}
