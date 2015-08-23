@@ -19,3 +19,38 @@ Run:
 ```
 ec2-instance-lister
 ```
+
+## options
+
+### --searchString | -s
+Specify a search string to find in the instance tags
+
+### --account
+Specify an account name for different credentials.
+The default credentials are named _aws_ and they appear in the config file like so:
+
+```
+{
+    "aws": {
+        "accessKeyId": "blablabla",
+        "secretAccessKey": "shhhhhhhhh",
+        "region": "us-moon-1"
+    }
+}
+```
+
+if you specify --account or add it in the config, e.g. ```ec2-instance-lister --account=foo``` then credentials used will be under the account name key:
+
+```
+{
+    "aws": { ... },
+    "foo": {
+        "accessKeyId": "blablabla",
+        "secretAccessKey": "shhhhhhhhh",
+        "region": "us-moon-1"  
+    }
+}
+```
+
+### --listPrivateInstances
+A flag that indicates if results should include private instances (that only has private ips, inside a vpc for example). Defaults to false
