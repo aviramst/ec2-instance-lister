@@ -54,3 +54,4 @@ if you specify --account or add it in the config, e.g. ```ec2-instance-lister --
 
 ### --ipType
 which ip of the server to return: private or public, defaults to 'public'
+when selecting public or private, instances that do not have a particular ip will not be listed
