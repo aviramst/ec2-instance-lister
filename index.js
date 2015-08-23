@@ -20,7 +20,17 @@ var ec2params = {
 	}]
 };
 
-var ec2 = new AWS.EC2(config.aws);
+var credentials = config.aws
+
+if (config.account) {
+	if (config[config.account]) {
+		credentials = config[config.account]
+	} else {
+		return console.error('you specified an account %s, but the config did not include actual credential data, try adding config.[account name] = { ... credentials here ...}', config.account)
+	}
+}
+
+var ec2 = new AWS.EC2(credentials);
 ec2.describeInstances(ec2params, onResponse);
 
 function onResponse(err, data) {
