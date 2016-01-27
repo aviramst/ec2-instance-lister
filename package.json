@@ -1,6 +1,6 @@
 {
   "name": "ec2-instance-lister",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "List IP addresses of ec2 instances having a certain keyword in their name",
   "main": "index.js",
   "bin": {
